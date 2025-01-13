@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  user-service:
+    image: user-service:latest
+    container_name: user-service
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${RDS-ENDPOINT}:5432/${DATABASE_NAME}
+      SPRING_DATASOURCE_USERNAME: ${RDS_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${RDS_PASSWORD}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15
+    container_name: local-postgres
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${RDS_USERNAME}
+      POSTGRES_PASSWORD: ${RDS_PASSWORD}
+    ports:
+      - "5432:5432"
