@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: user-service
+
+  datasource:
+    url: jdbc:postgresql://{hostname}
+    username: XXX
+    password: XXX
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8081
+
+jwt:
+  secret: your-very-secure-and-long-secret-key

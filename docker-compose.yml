@@ -4,7 +4,7 @@ services:
     image: user-service:latest
     container_name: user-service
     ports:
-      - "8080:8080"
+      - "8080:8081"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://${RDS-ENDPOINT}:5432/${DATABASE_NAME}
       SPRING_DATASOURCE_USERNAME: ${RDS_USERNAME}
